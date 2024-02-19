@@ -19,7 +19,12 @@ function App() {
       const currentTasks = [...prevState];
       const index = currentTasks.findIndex((t) => t.name === task.name);
       if (index === -1) {
-        return [...currentTasks, task];
+        const existingTask = currentTasks.find((t) => t.id === task.id);
+        if (!existingTask) {
+          return [...currentTasks, task];
+        } else {
+          existingTask.name = task.name;
+        }
       }
       return currentTasks;
     });
@@ -29,6 +34,7 @@ function App() {
     setTasks((prevState) => {
       return prevState.filter((t) => t.id !== id);
     });
+    setSelectedTask(null);
   }, []);
 
   return (

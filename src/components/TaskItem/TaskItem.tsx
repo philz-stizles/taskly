@@ -13,7 +13,12 @@ const TaskItem = ({ task, onEdit }: Props) => {
       <div>
         <p>{task.name}</p>
       </div>
-      <Button label="Edit" onClick={() => onEdit(task)} />
+      <Button
+        label="Edit"
+        variant="outlined"
+        size="md"
+        onClick={() => onEdit(task)}
+      />
     </li>
   );
 };

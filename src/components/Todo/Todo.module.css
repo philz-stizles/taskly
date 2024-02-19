@@ -19,3 +19,9 @@
   position: relative;
   padding: 1.8rem;
 }
+
+.TodoList ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

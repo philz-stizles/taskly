@@ -15,6 +15,8 @@ const EditTask = ({ task, onSave, onDelete }: Props) => {
   useEffect(() => {
     if (task && task.name) {
       setName(task.name);
+    } else {
+      setName('');
     }
   }, [task]);
 
@@ -23,7 +25,7 @@ const EditTask = ({ task, onSave, onDelete }: Props) => {
   return (
     <section className={classes.EditTask}>
       <div className={classes.EditTaskHeader}>
-        <h2>Edit Task</h2>
+        <h3>Edit Task</h3>
       </div>
 
       <div className={classes.EditTaskForm}>
