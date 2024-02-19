@@ -4,15 +4,16 @@ import classes from './TaskItem.module.css';
 
 type Props = {
   task: Task;
+  onEdit: (task: Task) => void;
 };
 
-const TaskItem = ({ task }: Props) => {
+const TaskItem = ({ task, onEdit }: Props) => {
   return (
     <li className={classes.TaskItem}>
       <div>
         <p>{task.name}</p>
       </div>
-      <Button label="Edit" />
+      <Button label="Edit" onClick={() => onEdit(task)} />
     </li>
   );
 };

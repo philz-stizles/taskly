@@ -1,16 +1,16 @@
 import { BiPlus } from 'react-icons/bi';
-import { FloatingButton, GoPro } from '..';
+import { FloatingButton, GoPro, TaskItem } from '..';
 import { Task } from '../../models/Task';
-import TaskList from '../TaskList/TaskList';
 import imageSrc from './../../assets/user.png';
 import classes from './Todo.module.css';
 
 type Props = {
   tasks: Task[];
   onCreate: () => void;
+  onEdit: () => void;
 };
 
-const Todo = ({ tasks, onCreate }: Props) => {
+const Todo = ({ tasks, onCreate, onEdit }: Props) => {
   return (
     <section className={classes.Todo}>
       <div className={classes.TodoHeader}>
@@ -22,7 +22,11 @@ const Todo = ({ tasks, onCreate }: Props) => {
       </div>
       <GoPro />
       <section className={classes.TodoList}>
-        <TaskList tasks={tasks} />
+        <ul>
+          {tasks.map((task) => (
+            <TaskItem key={task.id} task={task} onEdit={onEdit} />
+          ))}
+        </ul>
         <FloatingButton icon={BiPlus} onClick={onCreate} />
       </section>
     </section>
