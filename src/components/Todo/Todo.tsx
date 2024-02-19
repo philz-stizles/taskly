@@ -7,7 +7,7 @@ import classes from './Todo.module.css';
 type Props = {
   tasks: Task[];
   onCreate: () => void;
-  onEdit: () => void;
+  onEdit: (task: Task) => void;
 };
 
 const Todo = ({ tasks, onCreate, onEdit }: Props) => {

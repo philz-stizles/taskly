@@ -10,13 +10,18 @@ function App() {
     setSelectedTask(null);
   }, []);
 
+  const handleEdit = useCallback((task: Task) => {
+    setSelectedTask(task);
+  }, []);
+
   const handleSave = useCallback((task: Task) => {
     setTasks((prevState) => {
-      const index = prevState.findIndex((task) => task.name === task.name);
+      const currentTasks = [...prevState];
+      const index = currentTasks.findIndex((t) => t.name === task.name);
       if (index === -1) {
-        return [...prevState, task];
+        return [...currentTasks, task];
       }
-      return prevState;
+      return currentTasks;
     });
   }, []);
 
@@ -28,7 +33,7 @@ function App() {
 
   return (
     <main>
-      <Todo tasks={tasks} onCreate={handleCreate} />
+      <Todo tasks={tasks} onCreate={handleCreate} onEdit={handleEdit} />
       <EditTask
         task={selectedTask}
         onSave={handleSave}

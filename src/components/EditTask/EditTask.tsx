@@ -44,12 +44,15 @@ const EditTask = ({ task, onSave, onDelete }: Props) => {
           <Button
             expanded
             label="Save"
-            onClick={() =>
+            onClick={() => {
               onSave({
                 id: editMode ? task.id : new Date().toISOString(),
                 name,
-              })
-            }
+              });
+              if (!editMode) {
+                setName('');
+              }
+            }}
           />
         </div>
       </div>
